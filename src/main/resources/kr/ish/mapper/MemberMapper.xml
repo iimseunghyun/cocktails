@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ish.mapper.MemberMapper">
+
+
+	<insert id="insert">
+		insert into cocktails.members
+		(member_id,member_pass,name)
+		values (#{member_id}, #{member_pass},
+		#{name})
+	</insert>
+
+	<insert id="insertSelectKey">
+
+		<selectKey keyProperty="mno" order="BEFORE" resultType="int">
+			select auto_increment
+			from information_schema.tables
+			where TABLE_SCHEMA
+			= "cocktails"
+			and TABLE_NAME = "members"
+		</selectKey>
+
+		insert into cocktails.members(mno, member_id, member_pass, name)
+		values
+		(#{mno}, #{member_id}, #{member_pass}, #{name})
+	</insert>
+
+	<select id="read" resultType="kr.ish.domain.MemberVO">
+		select * from members where mno =
+		#{mno}
+	</select>
+
+	<update id="update">
+		UPDATE members
+		SET member_pass=#{member_pass},
+		name=#{name}
+		WHERE mno= #{mno}
+	</update>
+
+	<delete id="delete">
+		delete from members where mno = #{mno}
+	</delete>
+
+</mapper>
