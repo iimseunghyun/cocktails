@@ -34,7 +34,7 @@ public class MemberServiceTests {
 		member.setMember_pass("passpass");
 		member.setName("userService");
 		
-		service.signIn(member);
+		service.signUp(member);
 		
 		log.info("new member's mno....................:" + member.getMno());
 	}

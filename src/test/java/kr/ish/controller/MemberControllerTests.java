@@ -47,7 +47,7 @@ public class MemberControllerTests {
 //	}
 
 	@Test
-	public void testSignIn() throws Exception{
+	public void testSignUp() throws Exception{
 		
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/member/signIn")
 				.param("member_id", "controllertest")

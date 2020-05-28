@@ -19,17 +19,17 @@ public class MembersController {
 	
 	private MemberService service;				
 	
-	@GetMapping("/signIn")
-	public void signIn() {
+	@GetMapping("/signUp")
+	public void signUp() {
 		
 	}
 	
-	@PostMapping("/signIn")
-	public String signIn(MemberVO member, RedirectAttributes rttr) {
+	@PostMapping("/signUp")
+	public String signUp(MemberVO member, RedirectAttributes rttr) {
 		
-		log.info("...........................signIn: " + member);
+		log.info("...........................signUp: " + member);
 		
-		service.signIn(member);
+		service.signUp(member);
 		
 		rttr.addFlashAttribute("result", member.getName());
 		

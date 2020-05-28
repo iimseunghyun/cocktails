@@ -4,7 +4,7 @@ import kr.ish.domain.MemberVO;
 
 public interface MemberService {
 	
-	public void signIn(MemberVO member);
+	public void signUp(MemberVO member);
 	
 	public MemberVO info(int mno);
 	
