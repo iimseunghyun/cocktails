@@ -13,13 +13,13 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-@RequestMapping("/member/*")
+//@RequestMapping("/*")
 @AllArgsConstructor								//=true ? signIn get/post 작동 : signIn get만 작동 , 아마 서비스 클래스 주입이 안되어서.
 public class MembersController {
 	
 	private MemberService service;				
 	
-	@GetMapping("/signUp")
+	@RequestMapping("/signUp")
 	public void signUp() {
 		
 	}

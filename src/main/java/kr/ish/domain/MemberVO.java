@@ -9,4 +9,5 @@ public class MemberVO {
 	private String member_id;
 	private String member_pass;
 	private String name;
+	private boolean isAdmin;
 }
