@@ -25,7 +25,7 @@ public class MemberMapperTests {
 //	@Test
 //	public void insert_test() {
 //		
-//		IntStream.rangeClosed(0, 4).forEach(i ->{
+//		IntStream.rangeClosed(5, 9).forEach(i ->{
 //			
 //		MemberVO vo = new MemberVO();
 //		vo.setMember_id("user"+ i);
@@ -36,14 +36,14 @@ public class MemberMapperTests {
 //		
 //		log.info(vo);
 //		});
-	
-//	@Test
-//	public void testRead() {
-//		
-//		MemberVO vo = mapper.read(2);
-//		
-//		log.info(vo);
 //	}
+	@Test
+	public void testRead() {
+		
+		MemberVO vo = mapper.read(2);
+		
+		log.info(vo);
+	}
 	
 //	@Test
 //	public void testUpdate() {
@@ -57,10 +57,10 @@ public class MemberMapperTests {
 //		log.info(".................update count: " + count);
 //	}
 	
-	@Test
-	public void testDelete() {
-		
-		log.info("..............delete count: " + mapper.delete(5));
-	}
+//	@Test
+//	public void testDelete() {
+//		
+//		log.info("..............delete count: " + mapper.delete(5));
+//	}
 
 }
