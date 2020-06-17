@@ -1,4 +1,4 @@
-package kr.ish.controller;
+ package kr.ish.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -17,5 +17,21 @@ public class CommonController {
 		log.info("........................access Denied : " + auth);
 		
 		model.addAttribute("msg", "Access Denied");
+	}
+	
+	@GetMapping("/customSignIn")
+	public void signInInput(String error, String signOut, Model model) {
+		
+		log.info("error: " + error);
+		log.info("signOut: " + signOut);
+		
+		if(error != null) {
+			model.addAttribute("error", "Signin Error. Check your account");
+		}
+		
+		if(signOut != null) {
+			model.addAttribute("signOut", "Sign Out!");
+		}
+			
 	}
 }
