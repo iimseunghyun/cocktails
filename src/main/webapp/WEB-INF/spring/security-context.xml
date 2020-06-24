@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <bean id= "customAccessDenied" class= "kr.ish.security.CustomAccessDeniedHandler"></bean>
+<bean id= "customLoginSuccess" class= "kr.ish.security.CustomLoginSuccessHandler"></bean>
 <security:http auto-config="true" use-expressions="true">
 	
 	<security:intercept-url pattern = "/all" access = "permitAll"/>
@@ -18,12 +19,12 @@
 	
 <!-- 	<security:form-login/> -->
 	
-	<security:form-login login-page = "/customSignIn" />
+	<security:form-login login-page = "/customSignIn" authentication-success-handler-ref="customLoginSuccess" />
 	
 <!-- 	<security:access-denied-handler error-page= "/accessError"/> -->
 
 		<security:access-denied-handler ref= "customAccessDenied"/>
-	
+			
 </security:http>
 
 <security:authentication-manager>
