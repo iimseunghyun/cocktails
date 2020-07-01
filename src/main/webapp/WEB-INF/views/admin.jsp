@@ -9,5 +9,7 @@
 <body>
 <h1>admin page</h1>
 
+<a href = "/customSignOut">Sign Out</a>
+
 </body>
 </html>

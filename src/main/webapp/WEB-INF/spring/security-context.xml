@@ -19,12 +19,14 @@
 	
 <!-- 	<security:form-login/> -->
 	
+	<security:access-denied-handler ref= "customAccessDenied"/>
+
 	<security:form-login login-page = "/customSignIn" authentication-success-handler-ref="customLoginSuccess" />
 	
 <!-- 	<security:access-denied-handler error-page= "/accessError"/> -->
 
-		<security:access-denied-handler ref= "customAccessDenied"/>
-			
+	<security:logout logout-url="/customSignOut" invalidate-session="true"/>
+	
 </security:http>
 
 <security:authentication-manager>

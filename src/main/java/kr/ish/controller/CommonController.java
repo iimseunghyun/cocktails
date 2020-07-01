@@ -34,4 +34,11 @@ public class CommonController {
 		}
 			
 	}
+	
+	@GetMapping("/customSignOut")
+	public void SignOutGET() {
+		
+		log.info("custom SignOut");
+	}
+	
 }
