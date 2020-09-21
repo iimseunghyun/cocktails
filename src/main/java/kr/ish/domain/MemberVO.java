@@ -1,13 +1,20 @@
 package kr.ish.domain;
 
+import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class MemberVO {
 	
 	private int mno;
-	private String member_id;
-	private String member_pass;
+	private String id;
+	private String pass;
 	private String name;
-	private boolean isAdmin;
+	private boolean enabled;
+	
+	private Date regDate;
+	private Date updateDate;
+	private List<AuthorityVO> authList;
 }

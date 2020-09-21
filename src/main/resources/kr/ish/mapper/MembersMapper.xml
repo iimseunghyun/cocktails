@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace= "kr.ish.mapper.MembersMapper">
+  
+  <resultMap type="kr.ish.domain.MemberVO" id= "memberMap">
+  
+  <id property = "mno" column="mno"/>
+  <result property = "id" column="id"/>
+  <result property = "pass" column="pass"/>
+  <result property = "name" column="name"/>
+  <result property = "enabled" column="enabled"/>
+  <result property = "regDate" column="regdate"/>
+  <result property = "updateDate" column="updatedate"/>
+  <collection property="authList" resultMap = "authMap"/>
+  </resultMap>
+  
+  <resultMap type="kr.ish.domain.AuthorityVO" id = "authMap">
+  <result property = "id" column="id"/>
+  <result property = "authority" column="authority"/>
+  </resultMap>
+  
+  <select id="read" resultMap="memberMap" >
+  	SELECT
+	mno,
+  	mem.id, 
+  	pass, 
+  	name, 
+  	enabled, 
+  	regdate, 
+  	updatedate, 
+  	authority
+  	FROM
+  	members mem 
+  	LEFT OUTER JOIN authorities auth 
+  	ON mem.id = auth.id
+  	WHERE mem.id = #{id}
+ </select>
+ 
+</mapper>

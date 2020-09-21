@@ -9,39 +9,54 @@
 
 <bean id= "customAccessDenied" class= "kr.ish.security.CustomAccessDeniedHandler"></bean>
 <bean id= "customLoginSuccess" class= "kr.ish.security.CustomLoginSuccessHandler"></bean>
-<security:http auto-config="true" use-expressions="true">
-	
-	<security:intercept-url pattern = "/all" access = "permitAll"/>
-	
-	<security:intercept-url pattern = "/member" access ="hasRole('ROLE_MEMBER')"/>
+<bean id = "bcryptPasswordEncoder"
+	class ="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+<bean id = "customUserDetailsService" class = "kr.ish.security.CustomUserDetailsService"></bean>
 
-	<security:intercept-url pattern = "/admin" access ="hasRole('ROLE_ADMIN')"/>
-	
-<!-- 	<security:form-login/> -->
-	
-	<security:access-denied-handler ref= "customAccessDenied"/>
-
-	<security:form-login login-page = "/customSignIn" authentication-success-handler-ref="customLoginSuccess" />
-	
-<!-- 	<security:access-denied-handler error-page= "/accessError"/> -->
-
-	<security:logout logout-url="/customSignOut" invalidate-session="true"/>
-	
-</security:http>
-
-<security:authentication-manager>
-
-	<security:authentication-provider>
-		<security:user-service>
+	<security:http auto-config="true" use-expressions="true">
 		
-		<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
-
-		<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
+		<security:intercept-url pattern = "/all" access = "permitAll"/>
 		
-		</security:user-service>
+		<security:intercept-url pattern = "/member" access ="hasRole('ROLE_MEMBER')"/>
 	
-	</security:authentication-provider>
+		<security:intercept-url pattern = "/admin" access ="hasRole('ROLE_ADMIN')"/>
+		
+	<!-- 	<security:form-login/> -->
+		
+		<security:access-denied-handler ref= "customAccessDenied"/>
 	
-</security:authentication-manager>
+		<security:form-login login-page = "/customSignIn" authentication-success-handler-ref="customLoginSuccess" />
+		
+	<!-- 	<security:access-denied-handler error-page= "/accessError"/> -->
+	
+		<security:logout logout-url="/customSignOut" 
+		invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
+		
+		<security:remember-me 
+		data-source-ref = "dataSource" token-validity-seconds="604800" />
+		
+	</security:http>
+	
+	<security:authentication-manager>
+	
+		<security:authentication-provider  user-service-ref = "customUserDetailsService">
+<!-- 		<security:authentication-provider> -->
+			
+	<!-- 		<security:user-service> -->
+	<!-- 		<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/> -->
+	<!-- 		<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/> -->
+	<!-- 		</security:user-service> -->
+			
+	<!-- 		<security:jdbc-user-service data-source-ref="dataSource"/> -->
+	
+<!-- 			<security:jdbc-user-service data-source-ref="dataSource" -->
+<!-- 				users-by-username-query="select id, pass, enabled from cocktails_db.members where id = ? " -->
+<!-- 				authorities-by-username-query="select id, authority from cocktails_db.authorities where id = ? "/> -->
+	
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+			
+		</security:authentication-provider>
+		
+	</security:authentication-manager>
 
 </beans>

@@ -19,7 +19,10 @@
 	<input type = 'text' name = 'username' value = 'admin'>
 </div>
 <div>
-	<input type = 'password' name = 'password' value = 'admin'>
+	<input type = 'password' name = 'password' value = 'pass'>
+</div>
+<div>
+	<input type = "checkbox" name= "remember-me"> Remember Me
 </div>
 <div>
 	<input type = 'submit' value = "submit">
