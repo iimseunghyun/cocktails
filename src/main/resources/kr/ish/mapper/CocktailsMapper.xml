@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="kr.ish.mapper.CocktailsMapper">
+ 
+ <select id="getList" resultType="kr.ish.domain.CocktailsVO">
+ <![CDATA[
+ select * from cocktails_db.cocktails where cno > 0
+ ]]>
+  </select> 
+  
+  <insert id="insert">
+  	insert into cocktails (cname, cinfo)
+  	values (#{cname}, #{cinfo})
+  </insert>
+  
+  <insert id="insertSelectKey">
+  	<selectKey keyProperty="cno" order="BEFORE" resultType="int">
+			select auto_increment
+			from information_schema.tables
+			where TABLE_SCHEMA = "cocktails_db"
+			and TABLE_NAME = "cocktails"
+	</selectKey>
+
+		insert into cocktails_db.cocktails (cno, cname, cinfo)
+		values (#{cno}, #{cname}, #{cinfo})
+  </insert>
+ 
+<select id="read" resultType="kr.ish.domain.CocktailsVO">
+	select * from cocktails where cno = #{cno}
+</select>
+
+<delete id="delete">
+	delete from cocktails where cno = #{cno}
+</delete>
+
+<update id="update">
+	update cocktails
+	set cname = #{cname},
+	cinfo = #{cinfo}
+	where cno =#{cno}
+	
+</update>
+ </mapper>
