@@ -38,17 +38,19 @@ public class CocktailsMapperTests {
 //		log.info(cock);
 //	}
 
-//	@Test
-//	public void testInsertSelectKey() {
-//		
-//		CocktailsVO cock = new CocktailsVO();
-//		cock.setCname("testInsertSelectKey");
-//		cock.setCinfo("testInsertSelectKey");
-//		
-//		mapper.insertSelectKey(cock);
-//		
-//		log.info(cock);
-//	}
+	@Test
+	public void testInsertSelectKey() {
+		
+		CocktailsVO cock = new CocktailsVO();
+		cock.setCname("testInsertSelectKey");
+		cock.setCinfo("testInsertSelectKey");
+		
+		log.info(cock);
+		
+		mapper.insertSelectKey(cock);
+		
+		log.info(cock);
+	}
 
 //	@Test
 //	public void testRead() {

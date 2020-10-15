@@ -15,29 +15,44 @@ import lombok.extern.log4j.Log4j;
 public class CocktailsServiceImpl implements CocktailsService {
 
 	private CocktailsMapper mapper;
+	
 	@Override
 	public void register(CocktailsVO cock) {
-
+		
+		log.info("register new cocktail :........ " + cock);
+		
+		mapper.insertSelectKey(cock);
 	}
 
 	@Override
-	public CocktailsVO get(int cno) {
-		return null;
+	public CocktailsVO getC(int cno) {
+		
+		log.info("get : ........." + cno);
+		
+		return mapper.read(cno);
 	}
 
 	@Override
 	public boolean modify(CocktailsVO cock) {
-		return false;
+		
+		log.info("modify : ............" + cock);
+		
+		return mapper.update(cock) == 1;
 	}
 
 	@Override
 	public boolean remove(int cno) {
-		return false;
+		
+		log.info("remove : .............." + cno);
+		
+		return mapper.delete(cno) == 1;
 	}
 
 	@Override
-	public List<CocktailsVO> getList() {
-		return null;
+	public List<CocktailsVO> getCList() {
+		
+		log.info("getList..........");
+		return mapper.getList();
 	}
 
 }
