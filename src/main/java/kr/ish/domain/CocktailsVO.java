@@ -8,4 +8,5 @@ public class CocktailsVO {
 	private int cno;
 	private String cname;
 	private String cinfo;
+	private String ctype;
 }

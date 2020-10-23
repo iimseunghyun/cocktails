@@ -6,13 +6,13 @@ import kr.ish.domain.CocktailsVO;
 
 public interface CocktailsService {
 
-	public void register(CocktailsVO cock);
+	public void registerC(CocktailsVO cock);
 	
 	public CocktailsVO getC(int cno);
 	
-	public boolean modify(CocktailsVO cock);
+	public boolean modifyC(CocktailsVO cock);
 	
-	public boolean remove(int cno);
+	public boolean removeC(int cno);
 	
 	public List<CocktailsVO> getCList();
 }

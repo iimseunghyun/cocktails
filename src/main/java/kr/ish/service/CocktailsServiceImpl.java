@@ -17,7 +17,7 @@ public class CocktailsServiceImpl implements CocktailsService {
 	private CocktailsMapper mapper;
 	
 	@Override
-	public void register(CocktailsVO cock) {
+	public void registerC(CocktailsVO cock) {
 		
 		log.info("register new cocktail :........ " + cock);
 		
@@ -33,7 +33,7 @@ public class CocktailsServiceImpl implements CocktailsService {
 	}
 
 	@Override
-	public boolean modify(CocktailsVO cock) {
+	public boolean modifyC(CocktailsVO cock) {
 		
 		log.info("modify : ............" + cock);
 		
@@ -41,7 +41,7 @@ public class CocktailsServiceImpl implements CocktailsService {
 	}
 
 	@Override
-	public boolean remove(int cno) {
+	public boolean removeC(int cno) {
 		
 		log.info("remove : .............." + cno);
 		

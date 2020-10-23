@@ -11,8 +11,9 @@
   </select> 
   
   <insert id="insert">
-  	insert into cocktails (cname, cinfo)
-  	values (#{cname}, #{cinfo})
+  	insert into cocktails (cname, cinfo, ctype)
+  	values (#{cname}, #{cinfo}, #{ctype})
+  	
   </insert>
   
   <insert id="insertSelectKey">
@@ -23,8 +24,8 @@
 			and TABLE_NAME = "cocktails"
 	</selectKey>
 
-		insert into cocktails_db.cocktails (cno, cname, cinfo)
-		values (#{cno}, #{cname}, #{cinfo})
+		insert into cocktails_db.cocktails (cno, cname, cinfo, ctype)
+		values (#{cno}, #{cname}, #{cinfo}, #{ctype})
   </insert>
  
 <select id="read" resultType="kr.ish.domain.CocktailsVO">
@@ -38,7 +39,8 @@
 <update id="update">
 	update cocktails
 	set cname = #{cname},
-	cinfo = #{cinfo}
+	cinfo = #{cinfo},
+	ctype = #{ctype}
 	where cno =#{cno}
 	
 </update>
